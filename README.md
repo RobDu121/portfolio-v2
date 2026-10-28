@@ -4,8 +4,6 @@ Astro portfolio with four project case studies in Python, SQL, statistics, Excel
 
 Published address: https://robdu121.github.io/portfolio-v2/
 
-The previous site stays at https://robdu121.github.io/ in its separate `RobDu121.github.io` repository.
-
 ## Work on the website
 
 Use Node.js 24 and run these commands from this folder:
