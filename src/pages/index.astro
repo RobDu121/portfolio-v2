@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import ProjectCard from "../components/ProjectCard.astro";
+import {projects} from "../data/projects.ts"
+---
+
+<BaseLayout title="Robert Dutt | Portfolio">
+	<section id="home" class="content-section">
+		<p class="hero-label">MATHEMATICS • DATA ANALYTICS</p>
+		<h1>Robert Dutt</h1>
+		<p>Aspiring Data Analyst & Data Scientist</p>
+		<p>Turning complex data into meaningful insights through statistics, programming, and visualization.</p>
+		<a class="hero-button" href="#projects">Explore My Projects</a>
+	</section>
+
+	<section id="about" class="content-section">
+		<h2>About Me</h2>
+		<p>Hello, I’m Robert Dutt, a mathematics graduate from Lehigh University interested in data analytics, data science, statistics, and solving real-world problems with data.</p>
+		<p>I use Python, SQL, R, Excel, and Power BI to analyze data, uncover patterns, and communicate meaningful insights.</p>
+	</section>
+
+	<section id="skills" class="content-section">
+		<h2>Technical Skills</h2>
+		<p>Tools and technologies I use for data analysis, statistical modeling, and visualization.</p>
+		<div class="skills-grid">
+			<article class="skill-card">
+				<h3>Programming</h3>
+				<ul>
+					<li>Python</li>
+					<li>SQL</li>
+					<li>R</li>
+				</ul>
+			</article>
+			<article class="skill-card">
+				<h3>Visualization</h3>
+				<ul>
+					<li>Power BI</li>
+					<li>Excel</li>
+					<li>DAX</li>
+				</ul>
+			</article>
+			<article class="skill-card">
+				<h3>Data Analysis</h3>
+				<ul>
+					<li>A/B Testing</li>
+					<li>Hypothesis Testing</li>
+					<li>Data Cleaning</li>
+				</ul>
+			</article>
+		</div>
+	</section>
+
+	<section id="projects" class="content-section">
+		<h2>Featured Projects</h2>
+		<p>Explore my {projects.length} data analytics and statistics projects.</p>
+		
+		<div class="project-grid">
+			{projects.map((project) => (
+			<ProjectCard project={project} />
+			))}
+		</div>
+	</section>
+
+	<section id="contact" class="content-section">
+		<h2>Get in Touch</h2>
+		<p>Interested in working together? Feel free to reach out about data analytics opportunities or connect with me on GitHub.</p>
+		<div class="contact-actions">
+			<a class="contact-button" href="mailto:121robertd@gmail.com">Email Me</a>
+			<a class="contact-button secondary-button" href="https://github.com/RobDu121" target="_blank" rel="noopener noreferrer">My GitHub</a>
+		</div>
+	</section>
+</BaseLayout>
+

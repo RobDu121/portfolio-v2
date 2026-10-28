@@ -1,0 +1,182 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projects } from "../../data/projects";
+import type { Project } from "../../types/project";
+import ProjectMetric from "../../components/ProjectMetric.astro";
+import { withBase } from "../../utils/paths";
+
+export function getStaticPaths() {
+    return projects.map((project) => ({
+        params: { slug: project.slug },
+        props: { project }
+    }));
+}
+
+interface Props {
+    project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout 
+    title={`${project.title} | Robert Dutt`}
+    description={project.problem}
+>
+    <div class="content-section">
+
+        <div class="project-header">
+            <a class="back-link" href={withBase("#projects")}>Back to Projects</a>
+            <h1>{project.title}</h1>
+            <p>{project.problem}</p>
+        </div>
+        
+        {project.image && (
+            <img
+                src={withBase(project.image)}
+                alt={`Screenshot of ${project.title}`}
+                class="detail-image"
+                loading="lazy"
+            />
+        )}
+        
+        {project.metrics && ( 
+            <section>
+                <h2>Key Metrics</h2>
+                <div class="metrics-grid">
+                    {project.metrics.map((metric) => ( 
+                        <ProjectMetric metric={metric} />
+                    ))}
+                </div>
+            </section>
+        )}
+
+        {project.visualizations && ( 
+            <section class="visualizations-section">
+                <h2>Project Visualizations</h2>
+
+                <div class="visualizations-grid">
+                    {project.visualizations.map((visualization) => ( 
+                        <figure>
+                            <img 
+                                src={withBase(visualization.src)}
+                                alt={visualization.alt}
+                            />
+                            <figcaption>{visualization.caption}</figcaption>
+                        </figure>
+                    ))}
+                </div>
+            </section>
+        )}
+        
+        <section class="analysis-section">
+            <h2>Methodology</h2>
+
+            {project.methodologySteps?.length ? (
+                <ol>
+                    {project.methodologySteps.map((step) => (
+                        <li>{step}</li>
+                    ))}
+                </ol>
+            ) : (
+                <p>{project.methods}</p>
+            )}
+        </section>
+
+        <section class="analysis-section">
+            <h2>Results & Findings</h2>
+
+            {project.keyFindings?.length ? ( 
+                <ul>
+                    {project.keyFindings.map((finding) => (
+                        <li>{finding}</li>
+                    ))}
+                </ul>
+            ) : (
+                <p>{project.results}</p>
+            )}
+        </section>
+
+        {project.conclusion && (
+            <section class="analysis-section">
+                <h2>Conclusion</h2>
+                <p>{project.conclusion}</p>
+            </section>
+        )}
+
+
+        {project.nextSteps && project.nextSteps.length > 0 && ( 
+            <section class="analysis-section">
+                <h2>Next Steps</h2>
+                <ol>
+                    {project.nextSteps.map((step) => ( 
+                        <li>{step}</li>
+                    ))}
+                </ol>
+            </section>
+        )}
+        
+    </div>
+</BaseLayout>
+
+<style>
+    .metrics-grid{
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        display: grid;
+        gap: 16px;
+    }
+    .project-header {
+        margin-bottom: 32px;
+    }
+    .project-header h1 {
+        font-size: clamp(32px, 5vw, 56px);
+    }
+    .detail-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        border: 1px solid #334155;
+        margin-bottom: 24px;
+        box-sizing: border-box;
+    }
+    .back-link{
+        color: #60a5fa;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .back-link:hover {
+        color: #93c5fd;
+    }
+    .analysis-section h2{
+        color: #60a5fa;
+    }
+    li{
+        margin-bottom: 10px;
+    }
+    .visualizations-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 16px;
+    }
+    .visualizations-grid img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #334155;
+        box-sizing: border-box;
+    }
+    .visualizations-grid figcaption{
+        text-align: center;
+        font-size: 14px;
+        color: #cbd5e1;
+        margin-top: 10px;
+    }
+    .visualizations-grid figure{
+        margin: 0;
+    }
+    .visualizations-section {
+        margin-top: 32px;
+    }
+</style>

@@ -1,0 +1,128 @@
+
+
+body{
+    background-color: #0b1120;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+h1 {
+    color: #60a5fa;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+}
+h2{
+    font-size: 32px;
+    font-weight: 400;
+}
+p{
+    font-size: 18px;
+    line-height: 1.6;
+}
+.content-section{
+    max-width: 900px;
+    padding: 30px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    background-color: #172338;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    scroll-margin-top: 140px;
+}
+.content-section[id]{
+    scroll-margin-top: 110px;
+}
+
+.project-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap:20px;
+}
+.hero-label{
+    font-size: 14px;
+    font-weight: 700;
+    color: #93c5fd;
+}
+.hero-button{
+    display: inline-block;
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.hero-button:hover{
+    background-color: #1d4ed8;
+    transform: translateY(-3px);
+}
+.skills-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.skill-card{
+    background-color: #0b1120;
+    padding: 20px;
+    border: 1px solid #334155;
+    border-radius: 10px;
+}
+.skill-card h3{
+    color: #60a5fa;
+    margin-top: 0;
+}
+.skill-card ul{
+    list-style: none;
+    padding-left: 0;
+}
+.skill-card li{
+    margin-bottom: 10px;
+}
+.contact-actions{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.contact-button{
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.secondary-button{
+    background-color: transparent;
+    border: 1px solid #60a5fa;
+    color: #93c5fd;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.contact-button:hover{
+    background-color: #1d4ed8;
+    transform: translateY(-3px);
+}
+.secondary-button:hover{
+    background-color: #203955;
+    transform: translateY(-3px);
+}
+#home{
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+html{
+    scroll-behavior: smooth;
+}
+@media (max-width: 600px) {
+    #home{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .content-sections[id]{
+        scroll-margin-top: 150px;
+    }
+}
